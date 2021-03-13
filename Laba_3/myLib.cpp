@@ -24,7 +24,7 @@ int Dictionary_Size() {
 }
 
 
-void Fin_Dictionary(vector<vector<string>> &word_definition, int w) {
+void Fin_Dictionary(string word_definition[][2], int w) {
     
     fstream fin;
     fin.open("dictionary.txt");
@@ -41,23 +41,26 @@ void Fin_Dictionary(vector<vector<string>> &word_definition, int w) {
             getline(fin, str);
             ch = str.find(";", 0);
             word_definition[i][0] = str.substr(0, ch);
-            ch +=2;
-            word_definition[i][1] = str.substr(ch);
+            word_definition[i][1] = str.substr(ch+2);
             str = "";
         }
     }
     fin.close();
 }
     
-/*
-class Hash_Table {
- public:
-    int key;
-    string definition;
-};
 
-string* word (int key; string definition)
-{
-    string* word =
+/*
+void OutputDefinition(string sentence, string word_definition[][2], int w) {
+
+    while (sentence != "\0") {
+        int space_index = sentence.find(' ');
+        string word = sentence.substr(0, space_index);
+        int key = Key(word);
+        
+        //....
+        
+        cout << word << "; " << Hash_Table[key].definition << endl;
+        sentence.erase(0, space_index + 1);
+    }
 }
 */
