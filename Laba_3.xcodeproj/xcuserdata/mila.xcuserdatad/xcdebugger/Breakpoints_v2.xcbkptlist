@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "16E1EB40-4C64-42D2-83BD-68CF3D88E2AC"
+            uuid = "2A65D419-33E3-401A-99CE-C9179F1D6463"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Laba_3/myLib.cpp"
+            filePath = "Laba_3/Source.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "Fin_Dictionary(dict)"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5E141C0C-ABCE-4CD4-A44B-720215052E0B"
+            uuid = "43919106-A725-4C93-AAD4-80824C237D2C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Laba_3/myLib.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "Fin_Dictionary(dict)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "Fin_Dictionary(word_definition, w)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

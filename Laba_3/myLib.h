@@ -5,4 +5,5 @@
 #include <vector>
 using namespace std;
 
-void Fin_Dictionary(vector<string> &dict);
+int Dictionary_Size();
+void Fin_Dictionary(vector<vector<string>> &word_definition, int w);
