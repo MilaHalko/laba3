@@ -1,4 +1,4 @@
-#include "myLib.h"
+#include "hashtable.h"
 
 int Dictionary_Size() {
     
