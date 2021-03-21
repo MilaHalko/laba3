@@ -12,6 +12,7 @@ public:
 
 	void push_back(T data);
 	void pop_front();
+	void clear();
 	int GetSize() { return Size; }
 
 private:
@@ -69,5 +70,14 @@ inline void List<T>::pop_front()
 	delete temp;
 
 	Size--;
+}
+
+template<typename T>
+inline void List<T>::clear()
+{
+	while (Size)
+	{
+		pop_front();
+	}
 }
 
