@@ -10,6 +10,8 @@ public:
 	List();
 
 	void push_back(T data);
+	int GetSize() { return Size; }
+
 private:
 	template<typename T>
 	class Node
@@ -55,3 +57,4 @@ inline void List<T>::push_back(T data)
 
 	Size++;
 }
+
