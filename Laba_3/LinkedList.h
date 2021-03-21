@@ -9,7 +9,9 @@ class List
 public:
 	List();
 
+
 	void push_back(T data);
+	void pop_front();
 	int GetSize() { return Size; }
 
 private:
@@ -56,5 +58,16 @@ inline void List<T>::push_back(T data)
 	}
 
 	Size++;
+}
+
+template<typename T>
+inline void List<T>::pop_front()
+{
+	Node<T>* temp = head;
+
+	head = head->pNext;
+	delete temp;
+
+	Size--;
 }
 
