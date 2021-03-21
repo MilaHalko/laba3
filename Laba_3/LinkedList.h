@@ -15,6 +15,7 @@ public:
 	void clear();
 	int GetSize() { return Size; }
 
+	T& operator[](const int index);
 private:
 	template<typename T>
 	class Node
@@ -78,6 +79,22 @@ inline void List<T>::clear()
 	while (Size)
 	{
 		pop_front();
+	}
+}
+
+template<typename T>
+inline T& List<T>::operator[](const int index)
+{
+	int ctr = 0;
+	Node<T>* current = this->head;
+	while (current != nullptr)
+	{
+		if (ctr == index)
+		{
+			return current->data;
+		}
+		current = current->pNext;
+		ctr++;
 	}
 }
 
