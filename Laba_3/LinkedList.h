@@ -3,22 +3,23 @@
 #include <string>
 using namespace std;
 
-template<typename T>  // ! не стоит ли убрать шаблон так как мы знаем что мы заботаем со стригами?
+template<typename T>
+class Node            // хранения данных и указателей на следующий элемент списка
+{
+public:
+    Node* pNext;
+    T data;
+    Node(T data = T(), Node* pNext = NULL)
+    {
+        this->data = data;
+        this->pNext = pNext;
+    }
+};
+
+
+template<typename T>
 class List
 {
-    template<typename T>
-    class Node                 // хранения данных и указателей на следующий элемент списка
-    {
-    public:
-        Node* pNext;  // !не понимаю почему указатель реализуется через Node*
-        T data;
-        Node(T data = T(), Node* pNext = NULL)  // ! что значит Т()
-        {
-            this->data = data;
-            this->pNext = pNext;
-        }
-    };
-
     int size;
     Node<T>* head;
     
@@ -38,7 +39,7 @@ public:
 
 
 template<typename T>
-List<T>::List()         // заполнения по умолчанию
+List<T>::List()
 {
 	size = 0;
 	head = NULL;
@@ -50,7 +51,7 @@ inline void List<T>::pushBack(T definition)
 {
 	if (head == NULL)
 	{
-		head = new Node<T>(definition);   // ! почему тип пишется в <>?
+		head = new Node<T>(definition);
 	}
 	else
 	{
@@ -62,21 +63,9 @@ inline void List<T>::pushBack(T definition)
 		}
 		current->pNext = new Node<T>(definition);
 	}
-
 	size++;
 }
 
-template<typename T>
-inline void List<T>::print()
-{
-	Node<T>* current = this->head;
-	while (current != nullptr)
-	{
-		cout << current->data << "   ";
-		current = current->pNext;
-	}
-
-}
 
 template<typename T>
 inline void List<T>::clear()
@@ -87,7 +76,8 @@ inline void List<T>::clear()
 	}
 }
 
-template<typename T> // !не поняла как работает и зачем нужна / не можно ли соеденить pop_front и clear
+
+template<typename T>
 inline void List<T>::popFront()
 {
     Node<T>* temp = head;
@@ -97,6 +87,7 @@ inline void List<T>::popFront()
 
     size--;
 }
+
 
 template<typename T>
 inline T& List<T>::operator[](const int index)
@@ -114,3 +105,14 @@ inline T& List<T>::operator[](const int index)
 	}
 }
 
+
+template<typename T>
+inline void List<T>::print()
+{
+    Node<T>* current = this->head;
+    while (current != nullptr)
+    {
+        cout << current->data << "   ";
+        current = current->pNext;
+    }
+}

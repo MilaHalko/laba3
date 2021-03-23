@@ -3,7 +3,7 @@
 
 class Hashtable
 {
-    struct item         // в структуре всего один элемент может стоит в класс уже тогда положить?
+    struct item                                                             // в структуре всего один элемент может стоит в класс уже тогда положить?
     {
         List<string> data;
     };
@@ -17,16 +17,18 @@ public:
 	Hashtable();
 	void addItem(string word, string definition);
     void search(string word);
-	void printHashtable();
     int getSize() {return size;}
     void setSize(int s) {size = s;}
+    void printHashtable();
 };
+
 
 Hashtable::Hashtable()
 {
-	size = 1000;
+	size = 100000;
 	table = new item[size];
 }
+
 
 inline int Hashtable::hashFunction(string word)
 {
@@ -40,36 +42,32 @@ inline int Hashtable::hashFunction(string word)
 	return key;
 }
 
-inline void Hashtable::addItem(string word, string definition)  // изменила
+
+inline void Hashtable::addItem(string word, string definition)
 {
 	int key = hashFunction(word);
+    definition = word + "; " + definition;
 	table[key].data.pushBack(definition);
 }
 
-inline void Hashtable::printHashtable() // ! нужно сделать условие так как под индексом может ничего не быть, мы же заполняем рандомно
-{
-	for (int i = 0; i < size; i++)
-	{
-		table[i].data.print();
-		cout << endl;
-	}
-}
 
 inline void Hashtable::search(string word)
 {
-	int index = hashFunction(word);
+	int key = hashFunction(word);
 
-	if (table[index].data.getSize() == 0) // ! у нас не может быть такого случая
+	if (table[key].data.getSize() == 0)
 	{
 		cout << "No definition for such word!";
 	}
 	else
 	{
-		for (int i = 0; i < table[index].data.getSize(); i++)  // !нам же нужно найти ключ + вывести слово и определение / проверить на колизии, а то так выходит O = n
+		for (int i = 0; i < table[key].data.getSize(); i++)
 		{
-			if (table[index].data[i] == word)
+            string wordFromList = table[key].data[i].substr(0, table[key].data[i].find(";"));
+            
+			if (wordFromList == word)
 			{
-                cout << word << endl << table[index].data[i] << endl;
+                cout << word << endl << table[key].data[i] << endl;
 				break;
 			}
 		}
@@ -77,3 +75,11 @@ inline void Hashtable::search(string word)
 }
 
 
+inline void Hashtable::printHashtable()
+{
+    for (int i = 0; i < size; i++)
+    {
+        table[i].data.print();
+        cout << endl;
+    }
+}

@@ -2,11 +2,11 @@
 #include "linkedlist.h"
 #include "parsing.h"
 
-int main(){
-    
+int main()
+{
     int w = dictionarySize();                                        // words' quantity
     string wordDefinition [w][2];                                    // array contains words[i] and definition[j]
-    finDictionary(wordDefinition, w);                               // filling array "word_definition"
+    finDictionary(wordDefinition, w);                                // filling array "word_definition"
     
     Hashtable dictionary;
     dictHashing(wordDefinition, w, dictionary);
@@ -15,13 +15,16 @@ int main(){
     cout << "Write word/words to get its definition: "; cin >> sentence;
     cout << endl;
     
-    while (!sentence.empty()) {
+    while (!sentence.empty())
+    {
         string word = wordFromSentence(sentence);
         
-        if (word == "0") {
+        if (word == "0")
+        {
             cout << "No word was given!" << endl;
         }
-        else {
+        else
+        {
             dictionary.search(word);
         }
     }

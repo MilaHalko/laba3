@@ -1,18 +1,20 @@
 #include "parsing.h"
 
-int Dictionary_Size() {
-    
+int Dictionary_Size()
+{
     fstream fin;
     fin.open("dictionary.txt");
     int w = 0;                          // words' quantity
     
-    if (!fin.is_open()) {
+    if (!fin.is_open())
+    {
         cout << "Unable to open the dictionary file!" << endl;
     }
     
-    else {
-        
-        while (!fin.eof()) {
+    else
+    {
+        while (!fin.eof())
+        {
             string str;
             getline(fin, str);
             w++;
@@ -24,20 +26,23 @@ int Dictionary_Size() {
 }
 
 
-void Fin_Dictionary(string word_definition[][2], int w) {
-    
+void Fin_Dictionary(string word_definition[][2], int w)
+{
     fstream fin;
     fin.open("dictionary.txt");
     
-    if (!fin.is_open()) {
+    if (!fin.is_open())
+    {
         cout << "Unable to open the dictionary file!" << endl;
     }
     
-    else {
+    else
+    {
         string str;              // string from file
-        int ch;              // index of ";" in string
+        int ch;                  // index of ";" in string
         
-        for (int i = 0; i < w; i++) {
+        for (int i = 0; i < w; i++)
+        {
             getline(fin, str);
             ch = str.find(";", 0);
             word_definition[i][0] = str.substr(0, ch);
@@ -48,20 +53,26 @@ void Fin_Dictionary(string word_definition[][2], int w) {
     fin.close();
 }
     
-string wordFromSentence(string &sentence) {
-    
+
+string wordFromSentence(string &sentence)
+{
     string word = "";
 
-    for (int i = 0; i < sentence.size(); i++) {
-        if (isalpha(sentence[i])) {
+    for (int i = 0; i < sentence.size(); i++)
+    {
+        if (isalpha(sentence[i]))
+        {
             word += sentence[i];
             i++;
         }
-        else {
-            if (!word.size()) {
+        else
+        {
+            if (!word.size())
+            {
                 i++;
             }
-            else {
+            else
+            {
                 sentence.erase(0, i);
                 return word;
             }
@@ -70,15 +81,18 @@ string wordFromSentence(string &sentence) {
     return "0";
 }
 
-void dictHashing(string wordDefinition[][2], int w, Hashtable dictionary) {
-    
+
+void dictHashing(string wordDefinition[][2], int w, Hashtable dictionary)                                   // доделать resize
+{
     int words = 0;
     
-    for (int i = 0; i < w; i++) {
+    for (int i = 0; i < w; i++)
+    {
         dictionary.addItem(wordDefinition[i][0], wordDefinition[i][1]);
         words++;
         
-        if (words >= dictionary.getSize() * 0.8) {
+        if (words >= dictionary.getSize() * 0.8)
+        {
             int s = dictionary.getSize();
             dictionary.setSize(s*2);
         }
