@@ -55,6 +55,7 @@ string wordFromSentence(string &sentence) {
     for (int i = 0; i < sentence.size(); i++) {
         if (isalpha(sentence[i])) {
             word += sentence[i];
+            i++;
         }
         else {
             if (!word.size()) {
@@ -82,21 +83,4 @@ void dictHashing(string wordDefinition[][2], int w, Hashtable dictionary) {
             dictionary.setSize(s*2);
         }
     }
-    
 }
-
-/*
-void OutputDefinition(string sentence, string word_definition[][2], int w) {
-
-    while (sentence != "\0") {
-        int space_index = sentence.find(' ');
-        string word = sentence.substr(0, space_index);
-        int key = Key(word);
-        
-        //....
-        
-        cout << word << "; " << Hash_Table[key].definition << endl;
-        sentence.erase(0, space_index + 1);
-    }
-}
-*/

@@ -18,32 +18,31 @@ int main(){
     while (!sentence.empty()) {
         string word = wordFromSentence(sentence);
         
-        dictionary.search(word);
-        
-        /*List<string> list;
-
-        for (int i = 0; i < 3; i++)
-        {
-            word.clear();
-            cin >> word;
-            list.push_back(word);
+        if (word == "0") {
+            cout << "No word was given!" << endl;
         }
-        cout << "LinkedList: \n";
-        for (int i = 0; i < 3; i++)
-        {
-            cout << list[i] << endl;
+        else {
+            dictionary.search(word);
         }
-        list.clear();*/   // ! не понимаю для чего это нужно
     }
-    
-
-    /*
-        OutputDefinition(sentence, word_definition, w);
-    } while (1);
-     */
     return 0;
 }
 
+
+/*List<string> list;
+
+for (int i = 0; i < 3; i++)
+{
+    word.clear();
+    cin >> word;
+    list.push_back(word);
+}
+cout << "LinkedList: \n";
+for (int i = 0; i < 3; i++)
+{
+    cout << list[i] << endl;
+}
+list.clear();*/   // ! не понимаю для чего это нужно
 
 
 /* Supporting functions

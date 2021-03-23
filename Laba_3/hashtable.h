@@ -69,7 +69,7 @@ inline void Hashtable::search(string word)
 		{
 			if (table[index].data[i] == word)
 			{
-				cout << table[index].data[i];
+                cout << word << endl << table[index].data[i] << endl;
 				break;
 			}
 		}
