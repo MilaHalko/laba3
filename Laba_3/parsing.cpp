@@ -1,7 +1,8 @@
 #include "parsing.h"
 
-void dictHashing(Hashtable dictionary)                                   // доделать resize
+bool dictHashing(Hashtable dictionary)                                   // доделать resize
 {
+    bool resize = false;
     fstream fin;
     fin.open("dictionary.txt");
     
@@ -12,22 +13,26 @@ void dictHashing(Hashtable dictionary)                                   // до
     
     else
     {
+        dictionary.setSize(dictionary.getSize() * 2);
+        
         while (!fin.eof())
         {
             string str = "";
             getline(fin, str);
             int pos = str.find(";", 0);
-            dictionary.addItem(str.substr(0, pos), str.substr(pos+2));
             
-            /*
-            if ( >= dictionary.getSize() * 0.8)
+            dictionary.addItem(str.substr(0, pos), str.substr(pos + 2));
+            
+            if ( dictionary.getCount() / dictionary.getSize() >= 0.8)
             {
-                int s = dictionary.getSize();
-                dictionary.setSize(s*2);
-            }*/
+                dictionary.clearTable();
+                resize = true;
+                break;
+            }
         }
     }
     fin.close();
+    return resize;
 }
 
 

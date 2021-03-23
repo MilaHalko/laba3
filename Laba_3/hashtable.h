@@ -10,6 +10,7 @@ class Hashtable
 
     int size;
     item* table;
+    int count;
     
     int hashFunction(string word);
 
@@ -17,9 +18,13 @@ public:
 	Hashtable();
 	void addItem(string word, string definition);
     void search(string word);
+    void printHashtable();
+    void clearTable();
+    
     int getSize() {return size;}
     void setSize(int s) {size = s;}
-    void printHashtable();
+    int getCount() {return count;}
+    
 };
 
 
@@ -27,6 +32,7 @@ Hashtable::Hashtable()
 {
 	size = 100000;
 	table = new item[size];
+    count = 0;
 }
 
 
@@ -46,6 +52,9 @@ inline int Hashtable::hashFunction(string word)
 inline void Hashtable::addItem(string word, string definition)
 {
 	int key = hashFunction(word);
+    if (table[key].data.getSize() == 0) {
+        count++;
+    }
     definition = word + "; " + definition;
 	table[key].data.pushBack(definition);
 }
@@ -82,4 +91,13 @@ inline void Hashtable::printHashtable()
         table[i].data.print();
         cout << endl;
     }
+}
+
+
+inline void Hashtable::clearTable()
+{
+    for (int i = 0; i <= getSize(); i++) {
+        table[i].data.clear();
+    }
+    delete table;
 }

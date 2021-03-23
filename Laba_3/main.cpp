@@ -4,8 +4,14 @@
 
 int main()
 {
+    
     Hashtable dictionary;
-    dictHashing(dictionary);
+    bool resize;
+    
+    do {
+        resize = dictHashing(dictionary);
+    } while (resize);
+    
     
     string sentence;
     cout << "Write word/words to get its definition: "; cin >> sentence;

@@ -7,7 +7,7 @@
 using namespace std;
 
 
-void dictHashing(Hashtable);
+bool dictHashing(Hashtable);
 string wordFromSentence(string &);
 //int dictionarySize();
 //void finDictionary(string [][2], int);
