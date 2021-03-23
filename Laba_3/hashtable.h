@@ -15,9 +15,11 @@ class Hashtable
 
 public:
 	Hashtable();
-	void addItem(string data);
+	void addItem(string word, string definition);
     void search(string word);
 	void printHashtable();
+    int getSize() {return size;}
+    void setSize(int s) {size = s;}
 };
 
 Hashtable::Hashtable()
@@ -38,10 +40,10 @@ inline int Hashtable::hashFunction(string word)
 	return key;
 }
 
-inline void Hashtable::addItem(string word)
+inline void Hashtable::addItem(string word, string definition)  // изменила
 {
 	int key = hashFunction(word);
-	table[key].data.pushBack(word);
+	table[key].data.pushBack(definition);
 }
 
 inline void Hashtable::printHashtable() // ! нужно сделать условие так как под индексом может ничего не быть, мы же заполняем рандомно

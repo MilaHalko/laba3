@@ -4,9 +4,12 @@
 
 int main(){
     
-    int w = Dictionary_Size();                                        // words' quantity
-    string word_definition [w][2];                                    // array contains words[i] and definition[j]
-    Fin_Dictionary(word_definition, w);                               // filling array "word_definition"
+    int w = dictionarySize();                                        // words' quantity
+    string wordDefinition [w][2];                                    // array contains words[i] and definition[j]
+    finDictionary(wordDefinition, w);                               // filling array "word_definition"
+    
+    Hashtable dictionary;
+    dictHashing(wordDefinition, w, dictionary);
     
     string sentence;
     cout << "Write word/words to get its definition: "; cin >> sentence;
@@ -14,7 +17,10 @@ int main(){
     
     while (!sentence.empty()) {
         string word = wordFromSentence(sentence);
-        List<string> list;
+        
+        dictionary.search(word);
+        
+        /*List<string> list;
 
         for (int i = 0; i < 3; i++)
         {
@@ -27,34 +33,14 @@ int main(){
         {
             cout << list[i] << endl;
         }
-        list.clear();
+        list.clear();*/   // ! не понимаю для чего это нужно
     }
     
 
-
-
-
-
-
-
-
-
-
-
-
-    
-    // user's input
     /*
-    do {
-        cout << "Type a sentence to get definition: "; cin >> sentence;
-        
-        if (sentence == "0") {                                         // If user want to finish
-            break;
-        }
         OutputDefinition(sentence, word_definition, w);
     } while (1);
      */
-    system("pause");
     return 0;
 }
 

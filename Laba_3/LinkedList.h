@@ -26,13 +26,13 @@ public:
 	List();
    
     // методы списка (основные действия)
-	void pushBack(T data);
+	void pushBack(T definition);
 	void print();
 	void clear();
     void popFront();
     
     // счетчик размера списка + возможность обращению к элементу списка за индексом
-	int getSize() { return Size; }
+	int getSize() {return size;}
 	T& operator[](const int index);
 };
 
@@ -46,11 +46,11 @@ List<T>::List()         // заполнения по умолчанию
 
 
 template<typename T>
-inline void List<T>::pushBack(T data)
+inline void List<T>::pushBack(T definition)
 {
 	if (head == NULL)
 	{
-		head = new Node<T>(data);   // ! почему тип пишется в <>?
+		head = new Node<T>(definition);   // ! почему тип пишется в <>?
 	}
 	else
 	{
@@ -60,7 +60,7 @@ inline void List<T>::pushBack(T data)
 		{
 			current = current->pNext;
 		}
-		current->pNext = new Node<T>(data);
+		current->pNext = new Node<T>(definition);
 	}
 
 	size++;
@@ -83,12 +83,12 @@ inline void List<T>::clear()
 {
 	while (size)
 	{
-		pop_front();
+		popFront();
 	}
 }
 
 template<typename T> // !не поняла как работает и зачем нужна / не можно ли соеденить pop_front и clear
-inline void List<T>::pop_front()
+inline void List<T>::popFront()
 {
     Node<T>* temp = head;
 

@@ -48,7 +48,7 @@ void Fin_Dictionary(string word_definition[][2], int w) {
     fin.close();
 }
     
-string wordFromSentence(string sentence) {
+string wordFromSentence(string &sentence) {
     
     string word = "";
 
@@ -67,6 +67,22 @@ string wordFromSentence(string sentence) {
         }
     }
     return "0";
+}
+
+void dictHashing(string wordDefinition[][2], int w, Hashtable dictionary) {
+    
+    int words = 0;
+    
+    for (int i = 0; i < w; i++) {
+        dictionary.addItem(wordDefinition[i][0], wordDefinition[i][1]);
+        words++;
+        
+        if (words >= dictionary.getSize() * 0.8) {
+            int s = dictionary.getSize();
+            dictionary.setSize(s*2);
+        }
+    }
+    
 }
 
 /*
