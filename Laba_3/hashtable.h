@@ -8,7 +8,7 @@ public:
 	Hashtable();
 
 	void addItem(string data);
-
+	void printHashtable();
 
 private:
 	struct item
@@ -46,6 +46,14 @@ inline void Hashtable::addItem(string data)
 	table[index].data.push_back(data);
 }
 
+inline void Hashtable::printHashtable()
+{
+	for (int i = 0; i < Size; i++)
+	{
+		table[i].data.print();
+		cout << endl;
+	}
+}
 
 
 
