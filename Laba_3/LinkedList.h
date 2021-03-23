@@ -19,20 +19,20 @@ class List
         }
     };
 
-    int Size;
+    int size;
     Node<T>* head;
     
 public:
 	List();
    
     // методы списка (основные действия)
-	void push_back(T data);
+	void pushBack(T data);
 	void print();
 	void clear();
-    void pop_front();
+    void popFront();
     
     // счетчик размера списка + возможность обращению к элементу списка за индексом
-	int GetSize() { return Size; }
+	int getSize() { return Size; }
 	T& operator[](const int index);
 };
 
@@ -40,13 +40,13 @@ public:
 template<typename T>
 List<T>::List()         // заполнения по умолчанию
 {
-	Size = 0;
+	size = 0;
 	head = NULL;
 }
 
 
 template<typename T>
-inline void List<T>::push_back(T data)
+inline void List<T>::pushBack(T data)
 {
 	if (head == NULL)
 	{
@@ -63,7 +63,7 @@ inline void List<T>::push_back(T data)
 		current->pNext = new Node<T>(data);
 	}
 
-	Size++;
+	size++;
 }
 
 template<typename T>
@@ -81,7 +81,7 @@ inline void List<T>::print()
 template<typename T>
 inline void List<T>::clear()
 {
-	while (Size)
+	while (size)
 	{
 		pop_front();
 	}
@@ -95,13 +95,13 @@ inline void List<T>::pop_front()
     head = head->pNext;
     delete temp;
 
-    Size--;
+    size--;
 }
 
 template<typename T>
 inline T& List<T>::operator[](const int index)
 {
-	int ctr = 0;
+	int ctr = 0;        // ! за что отвечает?
 	Node<T>* current = this->head;
 	while (current != nullptr)
 	{

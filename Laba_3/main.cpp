@@ -3,11 +3,11 @@
 #include "parsing.h"
 
 int main(){
-    //string sentence;
+    string sentence;
     
-    //int w = Dictionary_Size();                                        // words' quantity
-    //string word_definition [w][2];                                    // array contains words[i] and definition[j]
-    //Fin_Dictionary(word_definition, w);                               // filling array "word_definition"
+    int w = Dictionary_Size();                                        // words' quantity
+    string word_definition [w][2];                                    // array contains words[i] and definition[j]
+    Fin_Dictionary(word_definition, w);                               // filling array "word_definition"
     
     
     

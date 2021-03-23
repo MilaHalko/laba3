@@ -8,14 +8,13 @@ class Hashtable
         List<string> data;
     };
 
-    int Size;
+    int size;
     item* table;
     
     int hashFunction(string word);
 
 public:
 	Hashtable();
-
 	void addItem(string data);
     void search(string word);
 	void printHashtable();
@@ -23,31 +22,31 @@ public:
 
 Hashtable::Hashtable()
 {
-	Size = 1000;
-	table = new item[Size];
+	size = 1000;
+	table = new item[size];
 }
 
 inline int Hashtable::hashFunction(string word)
 {
 	int hash = 0;
-	for (int length = word.size(), i = 0; i < length; i++)
+	for (int i = 0; i < word.size(); i++)
 	{
 		hash += word[i];
 	}
 
-	int key = hash % Size;
+	int key = hash % size;
 	return key;
 }
 
-inline void Hashtable::addItem(string data)
+inline void Hashtable::addItem(string word)
 {
-	int index = hashFunction(data);
-	table[index].data.push_back(data);
+	int key = hashFunction(word);
+	table[key].data.pushBack(word);
 }
 
-inline void Hashtable::printHashtable()
+inline void Hashtable::printHashtable() // ! нужно сделать условие так как под индексом может ничего не быть, мы же заполняем рандомно
 {
-	for (int i = 0; i < Size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		table[i].data.print();
 		cout << endl;
@@ -58,13 +57,13 @@ inline void Hashtable::search(string word)
 {
 	int index = hashFunction(word);
 
-	if (table[index].data.GetSize() == 0)
+	if (table[index].data.getSize() == 0) // ! у нас не может быть такого случая
 	{
 		cout << "No definition for such word!";
 	}
 	else
 	{
-		for (int size = table[index].data.GetSize(), i = 0; i < size; i++)
+		for (int i = 0; i < table[index].data.getSize(); i++)  // !нам же нужно найти ключ + вывести слово и определение / проверить на колизии, а то так выходит O = n
 		{
 			if (table[index].data[i] == word)
 			{
