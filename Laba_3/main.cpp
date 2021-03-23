@@ -1,4 +1,6 @@
 #include "hashtable.h"
+#include "linkedlist.h"
+#include "parsing.h"
 
 int main(){
     string sentence;
