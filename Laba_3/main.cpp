@@ -3,36 +3,33 @@
 #include "parsing.h"
 
 int main(){
-    string sentence;
     
     int w = Dictionary_Size();                                        // words' quantity
     string word_definition [w][2];                                    // array contains words[i] and definition[j]
     Fin_Dictionary(word_definition, w);                               // filling array "word_definition"
     
+    string sentence;
+    cout << "Write word/words to get its definition: "; cin >> sentence;
+    cout << endl;
     
-    
-    //..............
-    
-    
-    /*
-        
-    */
+    while (!sentence.empty()) {
+        string word = wordFromSentence(sentence);
+        List<string> list;
 
-    List<string> list;
-
-    string word;
-    for (int i = 0; i < 3; i++)
-    {
-        word.clear();
-        cin >> word;
-        list.push_back(word);
+        for (int i = 0; i < 3; i++)
+        {
+            word.clear();
+            cin >> word;
+            list.push_back(word);
+        }
+        cout << "LinkedList: \n";
+        for (int i = 0; i < 3; i++)
+        {
+            cout << list[i] << endl;
+        }
+        list.clear();
     }
-    cout << "LinkedList: \n";
-    for (int i = 0; i < 3; i++)
-    {
-        cout << list[i] << endl;
-    }
-    list.clear();
+    
 
 
 

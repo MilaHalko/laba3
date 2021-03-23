@@ -48,6 +48,26 @@ void Fin_Dictionary(string word_definition[][2], int w) {
     fin.close();
 }
     
+string wordFromSentence(string sentence) {
+    
+    string word = "";
+
+    for (int i = 0; i < sentence.size(); i++) {
+        if (isalpha(sentence[i])) {
+            word += sentence[i];
+        }
+        else {
+            if (!word.size()) {
+                i++;
+            }
+            else {
+                sentence.erase(0, i);
+                return word;
+            }
+        }
+    }
+    return "0";
+}
 
 /*
 void OutputDefinition(string sentence, string word_definition[][2], int w) {
