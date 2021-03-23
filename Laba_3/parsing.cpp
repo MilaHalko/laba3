@@ -1,5 +1,38 @@
 #include "parsing.h"
 
+void dictHashing(Hashtable dictionary)                                   // доделать resize
+{
+    fstream fin;
+    fin.open("dictionary.txt");
+    
+    if (!fin.is_open())
+    {
+        cout << "Unable to open the dictionary file!" << endl;
+    }
+    
+    else
+    {
+        while (!fin.eof())
+        {
+            string str = "";
+            getline(fin, str);
+            int pos = str.find(";", 0);
+            dictionary.addItem(str.substr(0, pos), str.substr(pos+2));
+            
+            /*
+            if ( >= dictionary.getSize() * 0.8)
+            {
+                int s = dictionary.getSize();
+                dictionary.setSize(s*2);
+            }*/
+        }
+    }
+    fin.close();
+}
+
+
+
+
 int Dictionary_Size()
 {
     fstream fin;
@@ -81,20 +114,3 @@ string wordFromSentence(string &sentence)
     return "0";
 }
 
-
-void dictHashing(string wordDefinition[][2], int w, Hashtable dictionary)                                   // доделать resize
-{
-    int words = 0;
-    
-    for (int i = 0; i < w; i++)
-    {
-        dictionary.addItem(wordDefinition[i][0], wordDefinition[i][1]);
-        words++;
-        
-        if (words >= dictionary.getSize() * 0.8)
-        {
-            int s = dictionary.getSize();
-            dictionary.setSize(s*2);
-        }
-    }
-}

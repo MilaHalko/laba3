@@ -6,7 +6,8 @@
 #include <string>
 using namespace std;
 
-int dictionarySize();
-void finDictionary(string [][2], int);
+
+void dictHashing(Hashtable);
 string wordFromSentence(string &);
-void dictHashing(string [][2], int, Hashtable);
+//int dictionarySize();
+//void finDictionary(string [][2], int);

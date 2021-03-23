@@ -92,7 +92,7 @@ inline void List<T>::popFront()
 template<typename T>
 inline T& List<T>::operator[](const int index)
 {
-	int ctr = 0;        // ! за что отвечает?
+	int ctr = 0;
 	Node<T>* current = this->head;
 	while (current != nullptr)
 	{

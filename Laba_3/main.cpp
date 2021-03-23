@@ -4,12 +4,8 @@
 
 int main()
 {
-    int w = dictionarySize();                                        // words' quantity
-    string wordDefinition [w][2];                                    // array contains words[i] and definition[j]
-    finDictionary(wordDefinition, w);                                // filling array "word_definition"
-    
     Hashtable dictionary;
-    dictHashing(wordDefinition, w, dictionary);
+    dictHashing(dictionary);
     
     string sentence;
     cout << "Write word/words to get its definition: "; cin >> sentence;
