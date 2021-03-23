@@ -9,7 +9,7 @@ public:
 
 	void addItem(string data);
 	void printHashtable();
-
+	void search(string word);
 private:
 	struct item
 	{
@@ -55,5 +55,25 @@ inline void Hashtable::printHashtable()
 	}
 }
 
+inline void Hashtable::search(string word)
+{
+	int index = hashFunction(word);
+
+	if (table[index].data.GetSize() == 0)
+	{
+		cout << "No definition for such word!";
+	}
+	else
+	{
+		for (int size = table[index].data.GetSize(), i = 0; i < size; i++)
+		{
+			if (table[index].data[i] == word)
+			{
+				cout << table[index].data[i];
+				break;
+			}
+		}
+	}
+}
 
 
