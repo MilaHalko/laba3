@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		218F259425F9757E00CC053A /* Source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 218F259125F9757E00CC053A /* Source.cpp */; };
-		218F259525F9757E00CC053A /* myLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 218F259225F9757E00CC053A /* myLib.cpp */; };
+		211D9761260A136D00437174 /* parsing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D975C260A136C00437174 /* parsing.cpp */; };
+		211D9763260A136D00437174 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D975E260A136C00437174 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +24,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		211D975B260A136C00437174 /* parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parsing.h; sourceTree = "<group>"; };
+		211D975C260A136C00437174 /* parsing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parsing.cpp; sourceTree = "<group>"; };
+		211D975E260A136C00437174 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		211D975F260A136C00437174 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		211D9760260A136C00437174 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashtable.h; sourceTree = "<group>"; };
 		218F256A25F9746F00CC053A /* Laba_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Laba_3; sourceTree = BUILT_PRODUCTS_DIR; };
-		218F259125F9757E00CC053A /* Source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Source.cpp; sourceTree = "<group>"; };
-		218F259225F9757E00CC053A /* myLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = myLib.cpp; sourceTree = "<group>"; };
-		218F259325F9757E00CC053A /* myLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,11 @@
 		218F256C25F9746F00CC053A /* Laba_3 */ = {
 			isa = PBXGroup;
 			children = (
-				218F259225F9757E00CC053A /* myLib.cpp */,
-				218F259325F9757E00CC053A /* myLib.h */,
-				218F259125F9757E00CC053A /* Source.cpp */,
+				211D975E260A136C00437174 /* main.cpp */,
+				211D9760260A136C00437174 /* hashtable.h */,
+				211D975F260A136C00437174 /* LinkedList.h */,
+				211D975C260A136C00437174 /* parsing.cpp */,
+				211D975B260A136C00437174 /* parsing.h */,
 			);
 			path = Laba_3;
 			sourceTree = "<group>";
@@ -123,8 +127,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				218F259425F9757E00CC053A /* Source.cpp in Sources */,
-				218F259525F9757E00CC053A /* myLib.cpp in Sources */,
+				211D9763260A136D00437174 /* main.cpp in Sources */,
+				211D9761260A136D00437174 /* parsing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

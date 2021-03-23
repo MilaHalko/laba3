@@ -1,30 +1,29 @@
 #pragma once
-
-#include "linkedlist.h"
+#include "LinkedList.h"
 
 class Hashtable
 {
+    struct item         // в структуре всего один элемент может стоит в класс уже тогда положить?
+    {
+        List<string> data;
+    };
+
+    int Size;
+    item* table;
+    
+    int hashFunction(string word);
+
 public:
 	Hashtable();
 
 	void addItem(string data);
+    void search(string word);
 	void printHashtable();
-	void search(string word);
-private:
-	struct item
-	{
-		List<string> data;
-	};
-
-	int hashFunction(string word);
-
-	int Size;
-	item* table;
 };
 
 Hashtable::Hashtable()
 {
-	Size = 10;
+	Size = 1000;
 	table = new item[Size];
 }
 
