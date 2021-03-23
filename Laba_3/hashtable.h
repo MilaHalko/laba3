@@ -19,6 +19,8 @@ private:
 
 Hashtable::Hashtable()
 {
+	Size = 10;
+	table = new item[Size];
 }
 
 
