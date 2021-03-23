@@ -12,6 +12,7 @@ public:
 
 	void push_back(T data);
 	void pop_front();
+	void print();
 	void clear();
 	int GetSize() { return Size; }
 
@@ -71,6 +72,18 @@ inline void List<T>::pop_front()
 	delete temp;
 
 	Size--;
+}
+
+template<typename T>
+inline void List<T>::print()
+{
+	Node<T>* current = this->head;
+	while (current != nullptr)
+	{
+		cout << current->data << "   ";
+		current = current->pNext;
+	}
+
 }
 
 template<typename T>
