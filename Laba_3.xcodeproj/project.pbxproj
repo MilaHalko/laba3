@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211D9761260A136D00437174 /* parsing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D975C260A136C00437174 /* parsing.cpp */; };
 		211D9763260A136D00437174 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D975E260A136C00437174 /* main.cpp */; };
+		211D9786260BC1A800437174 /* hashtable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 211D9785260BC1A800437174 /* hashtable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,8 @@
 		211D975E260A136C00437174 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		211D975F260A136C00437174 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
 		211D9760260A136C00437174 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hashtable.h; sourceTree = "<group>"; };
+		211D9783260BB22E00437174 /* Dictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dictionary.txt; sourceTree = "<group>"; };
+		211D9785260BC1A800437174 /* hashtable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hashtable.cpp; sourceTree = "<group>"; };
 		218F256A25F9746F00CC053A /* Laba_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Laba_3; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,10 +66,12 @@
 			isa = PBXGroup;
 			children = (
 				211D975E260A136C00437174 /* main.cpp */,
-				211D9760260A136C00437174 /* hashtable.h */,
-				211D975F260A136C00437174 /* LinkedList.h */,
-				211D975C260A136C00437174 /* parsing.cpp */,
 				211D975B260A136C00437174 /* parsing.h */,
+				211D975C260A136C00437174 /* parsing.cpp */,
+				211D9760260A136C00437174 /* hashtable.h */,
+				211D9785260BC1A800437174 /* hashtable.cpp */,
+				211D975F260A136C00437174 /* LinkedList.h */,
+				211D9783260BB22E00437174 /* Dictionary.txt */,
 			);
 			path = Laba_3;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211D9786260BC1A800437174 /* hashtable.cpp in Sources */,
 				211D9763260A136D00437174 /* main.cpp in Sources */,
 				211D9761260A136D00437174 /* parsing.cpp in Sources */,
 			);
