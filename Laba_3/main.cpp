@@ -1,62 +1,44 @@
 #include "hashtable.h"
 #include "linkedlist.h"
 #include "parsing.h"
+#include <fstream>
 
 int main()
 {
-    
-    Hashtable dictionary;
-    bool resize;
-    
-    do {
-        resize = dictHashing(dictionary);
-    } while (resize);
-    
-    
-    string sentence;
-    cout << "Write word/words to get its definition: "; cin >> sentence;
-    cout << endl;
-    
-    while (!sentence.empty())
-    {
-        string word = wordFromSentence(sentence);
-        
-        if (word == "0")
-        {
-            cout << "No word was given!" << endl;
-        }
-        else
-        {
-            dictionary.search(word);
-        }
-    }
-    return 0;
+	Hashtable table;
+
+	ifstream fin;
+	fin.open("Dictionary.txt");
+
+	int ptr = 0;
+	if (!fin.is_open())
+	{
+		cout << "Unable to open the file!" << endl;
+	}
+	else
+	{
+		string str;
+
+		while (!fin.eof())
+		{
+			str.clear();
+			getline(fin, str);
+			table.addItem(str);
+		}
+	}
+	fin.close();
+
+	vector<string> prompt = input();
+
+	cout << endl << endl;
+	for (int size = prompt.size(), i = 0; i < size; i++)
+	{
+		cout << "=====================\n";
+		table.search(prompt[i]);
+		cout << endl;
+	}
+	cout << "============================================\n";
+
+	table.clear();
+	system("pause");
 }
-
-
-/*List<string> list;
-
-for (int i = 0; i < 3; i++)
-{
-    word.clear();
-    cin >> word;
-    list.push_back(word);
-}
-cout << "LinkedList: \n";
-for (int i = 0; i < 3; i++)
-{
-    cout << list[i] << endl;
-}
-list.clear();*/   // ! не понимаю для чего это нужно
-
-
-/* Supporting functions
- 
- // Checking Fin_Dictionary (first 10 words)
- for (int i = 0; i < 10; i++) {
-    for(int j = 0; j < 2; j++) {
-        cout << word_definition[i][j] << endl;
-    }
- }
- 
- */

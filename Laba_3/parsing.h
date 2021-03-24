@@ -1,13 +1,10 @@
 #pragma once
-#include "hashtable.h"
-#include "LinkedList.h"
+
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
-
-bool dictHashing(Hashtable);
-string wordFromSentence(string &);
-//int dictionarySize();
-//void finDictionary(string [][2], int);
+void printDict(string* dict, int size);
+string toUpper(string str);
+vector<string> input();

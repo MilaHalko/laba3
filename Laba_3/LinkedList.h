@@ -1,100 +1,115 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 using namespace std;
 
 template<typename T>
-class Node            // хранения данных и указателей на следующий элемент списка
-{
-public:
-    Node* pNext;
-    T data;
-    Node(T data = T(), Node* pNext = NULL)
-    {
-        this->data = data;
-        this->pNext = pNext;
-    }
-};
-
-
-template<typename T>
 class List
 {
-    int size;
-    Node<T>* head;
-    
 public:
 	List();
-   
-    // методы списка (основные действия)
-	void pushBack(T definition);
+
+	void pop_front();
+	void push_back(T data);
 	void print();
 	void clear();
-    void popFront();
-    
-    // счетчик размера списка + возможность обращению к элементу списка за индексом
-	int getSize() {return size;}
-	T& operator[](const int index);
-};
+	bool is_empty();
+	int getSize() { return Size; }
 
+	T& operator[](const int index);
+private:
+	template<typename T>
+	class Node
+	{
+	public:
+		Node* pNext;
+		T data;
+		Node(T data = T(), Node* pNext = nullptr)
+		{
+			this->data = data;
+			this->pNext = pNext;
+		}
+	};
+
+	int Size;
+	Node<T>* head;
+};
 
 template<typename T>
 List<T>::List()
 {
-	size = 0;
-	head = NULL;
+	Size = 0;
+	head = nullptr;
 }
 
+template<typename T>
+inline void List<T>::pop_front()
+{
+	Node<T> *temp = head;
+
+	head = head->pNext;
+	delete temp;
+
+	Size--;
+}
 
 template<typename T>
-inline void List<T>::pushBack(T definition)
+inline void List<T>::push_back(T data)
 {
-	if (head == NULL)
+	if (head == nullptr)
 	{
-		head = new Node<T>(definition);
+		head = new Node<T>(data); 
 	}
 	else
 	{
 		Node<T>* current = this->head;
 
-		while (current->pNext != NULL)
+		while (current->pNext != nullptr)
 		{
 			current = current->pNext;
 		}
-		current->pNext = new Node<T>(definition);
+		current->pNext = new Node<T>(data);
 	}
-	size++;
+
+	Size++;
+}
+
+template<typename T>
+inline void List<T>::print()
+{
+	Node<T>* current = this->head;
+	while (current != nullptr)
+	{
+		cout << current->data << "   ";
+		current = current->pNext;
+	}
+	
 }
 
 
 template<typename T>
 inline void List<T>::clear()
 {
-	while (size)
+	while (Size)
 	{
-		popFront();
+		pop_front();
 	}
 }
 
-
 template<typename T>
-inline void List<T>::popFront()
+inline bool List<T>::is_empty()
 {
-    Node<T>* temp = head;
-
-    head = head->pNext;
-    delete temp;
-
-    size--;
+	if (this->getSize() == 0) return true;
+	else return false;
 }
 
-
 template<typename T>
-inline T& List<T>::operator[](const int index)
+T& List<T>::operator[](const int index)
 {
 	int ctr = 0;
 	Node<T>* current = this->head;
-	while (current != nullptr)
+	while (current!=nullptr)
 	{
 		if (ctr == index)
 		{
@@ -105,14 +120,3 @@ inline T& List<T>::operator[](const int index)
 	}
 }
 
-
-template<typename T>
-inline void List<T>::print()
-{
-    Node<T>* current = this->head;
-    while (current != nullptr)
-    {
-        cout << current->data << "   ";
-        current = current->pNext;
-    }
-}

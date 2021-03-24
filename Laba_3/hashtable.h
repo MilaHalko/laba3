@@ -1,103 +1,124 @@
 #pragma once
-#include "LinkedList.h"
+
+#include "linkedlist.h"
 
 class Hashtable
 {
-    struct item                                                             // в структуре всего один элемент может стоит в класс уже тогда положить?
-    {
-        List<string> data;
-    };
-
-    int size;
-    item* table;
-    int count;
-    
-    int hashFunction(string word);
-
 public:
 	Hashtable();
-	void addItem(string word, string definition);
-    void search(string word);
-    void printHashtable();
-    void clearTable();
-    
-    int getSize() {return size;}
-    void setSize(int s) {size = s;}
-    int getCount() {return count;}
-    
+
+	void addItem(string data); 
+	void printHashtable();
+	void search(string word);
+	void clear();
+	void resize();
+private:
+	struct item
+	{
+		List<string> data;
+	};
+
+	int hashFunction(string word);
+	string separateWord(string str);
+
+	int Size;
+	int count;
+	item* table;
 };
 
-
 Hashtable::Hashtable()
-{
-	size = 100000;
-	table = new item[size];
-    count = 0;
+{ 
+	Size = 10000;
+	count = 0;
+	table = new item[Size];
 }
-
 
 inline int Hashtable::hashFunction(string word)
 {
-	int hash = 0;
-	for (int i = 0; i < word.size(); i++)
+	long unsigned int hash = 0;
+	for (int lenght = word.size(), i = 0; i < lenght; i++)
 	{
-		hash += word[i];
+		hash = hash * 31 + word[i];
 	}
 
-	int key = hash % size;
+	int key = hash % Size;
 	return key;
 }
 
-
-inline void Hashtable::addItem(string word, string definition)
+inline string Hashtable::separateWord(string str)
 {
-	int key = hashFunction(word);
-    if (table[key].data.getSize() == 0) {
-        count++;
-    }
-    definition = word + "; " + definition;
-	table[key].data.pushBack(definition);
+	return str.substr(0, str.find(';'));
 }
 
-
-inline void Hashtable::search(string word)
+inline void Hashtable::addItem(string data)
 {
-	int key = hashFunction(word);
+	int index = hashFunction(separateWord(data)); // index == key
 
-	if (table[key].data.getSize() == 0)
-	{
-		cout << "No definition for such word!";
-	}
-	else
-	{
-		for (int i = 0; i < table[key].data.getSize(); i++)
-		{
-            string wordFromList = table[key].data[i].substr(0, table[key].data[i].find(";"));
-            
-			if (wordFromList == word)
-			{
-                cout << word << endl << table[key].data[i] << endl;
-				break;
-			}
-		}
-	}
+	if (table[index].data.is_empty()) count++; // if use new index count++
+	if (count / Size > 0.8) resize();
+
+	table[index].data.push_back(data);   // push data
 }
-
 
 inline void Hashtable::printHashtable()
 {
-    for (int i = 0; i < size; i++)
-    {
-        table[i].data.print();
-        cout << endl;
-    }
+	for (int i = 0; i < Size; i++)
+	{
+		table[i].data.print();
+		cout << endl;
+	}
 }
 
-
-inline void Hashtable::clearTable()
+inline void Hashtable::search(string word)
 {
-    for (int i = 0; i <= getSize(); i++) {
-        table[i].data.clear();
-    }
-    delete table;
+	int index = hashFunction(word);
+	bool flag = false;
+
+	for (int  size = table[index].data.getSize(), i = 0; i < size; i++)
+	{
+		if (separateWord(table[index].data[i]) == word)
+		{
+			flag = true;
+			cout << table[index].data[i];
+			break;
+		}
+	}
+	if (!flag)
+	{
+		cout << "=====================\n";
+		cout << "There is no definition of such a word!\n";
+	}
+}
+
+inline void Hashtable::clear()
+{
+	for (int i = 0; i < Size; i++)
+	{
+		table->data.clear();
+	}
+	delete[] table;
+}
+
+inline void Hashtable::resize()
+{
+	int pastSize = Size;
+	Size *= 2;
+	item* newTable = new item[Size];
+	
+	count = 0;
+	swap(table, newTable);
+
+	for (int i = 0; i < pastSize; i++)
+	{
+		for (int length = newTable[i].data.getSize(), j = 0; j < length; j++)
+		{
+			addItem(newTable[i].data[j]);
+		}
+	}
+	
+	for (int i = 0; i < pastSize; i++)
+	{
+		newTable->data.clear();
+	}
+	delete[] newTable;
 }
