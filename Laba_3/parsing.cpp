@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "dictionary.h"
 
 void dictionaryToHashTable(Hashtable table)
 {

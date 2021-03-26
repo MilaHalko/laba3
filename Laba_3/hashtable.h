@@ -1,5 +1,5 @@
 #pragma once
-#include "LinkedList.h"
+#include "linkedlist.h"
 
 class Hashtable
 {
